@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import principal, samsung, xiaomi, Xiaomi_redmi_note_12, Samsung_galaxy_s10, registro, cambiarcontra, index,home, contacto, borgona, borgona2
+from .views import principal, samsung, xiaomi, Xiaomi_redmi_note_12, Samsung_galaxy_s10, registro, cambiarcontra
 
 urlpatterns = [
     path('',principal,name="principal"),
@@ -11,10 +11,4 @@ urlpatterns = [
     path('cambiarcontra',cambiarcontra,name="cambiarcontra"),
     path('registro',registro,name="registro"),
 
-
-    path('index',index,name="index"),
-    path('home',home,name="home"),
-    path('contacto',contacto,name="contacto"),
-    path('borgona',borgona,name="borgona"),
-    path('borgona2',borgona2,name="borgona2"),
 ]
