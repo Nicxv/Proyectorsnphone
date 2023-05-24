@@ -8,7 +8,7 @@
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">  
 
-    <link rel="stylesheet" href="css/sg.css">
+    <link rel="stylesheet" href="{% static 'menu/css/sg.css' %}">
 </head>
 <body>
 
@@ -16,7 +16,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
           <a class="navbar-brand" href="#">
-            <img src="img/RSN.png" alt="logo" width="200" height="60" style="max-width: 100%;">
+            <img src="{% static 'menu/img/RSN.png' %}" alt="logo" width="200" height="60" style="max-width: 100%;">
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -27,10 +27,10 @@
                 <a class="nav-link active" style="color: white; font-size: 17px;" aria-current="page" href="principal.html">Inicio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" style="color: white; font-size: 17px;" href="samsung.html">Samsung</a>
+                <a class="nav-link" style="color: white; font-size: 17px;" href="{% url 'samsung' %}">Samsung</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" style="color: white; font-size: 17px;" href="xiaomi.html">Xiaomi</a>
+                <a class="nav-link" style="color: white; font-size: 17px;" href="{% url 'xiaomi' %}">Xiaomi</a>
               </li>
             </ul>
             
@@ -41,13 +41,13 @@
 
     <div class="row" style="margin-bottom: 30px;">
       <div class="col-md-6 col-sm-6 ajustar1">
-        <img class="" src="img/personaa.png"  width="35" height="35" alt="persona"><br>
-        <a class="textoedit" href="micuenta.html"><b>Ingresar</b> </a>
+        <img class="" src="{% static 'menu/img/personaa.png' %}"  width="35" height="35" alt="persona"><br>
+        <a class="textoedit" href="{% url 'micuenta' %}"><b>Ingresar</b> </a>
       </div>
 
       <div class="col-md-6 col-sm-6 ajustar1">
-        <img class="img1" src="img/carroo.png"  width="35" height="35" alt="car"><br>
-        <a class="textoedit" href="carrito.html"> <b>Ver Carro</b> </a>
+        <img class="img1" src="{% static 'menu/img/carroo.png' %}"  width="35" height="35" alt="car"><br>
+        <a class="textoedit" href="{% url 'carrito' %}"> <b>Ver Carro</b> </a>
       </div>
       
       
@@ -63,16 +63,16 @@
           </div>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="img/sg1.1.png"  class="d-block w-100" alt="samsun">
+              <img src="{% static 'menu/img/sg1.1.png' %}"  class="d-block w-100" alt="samsun">
             </div>
             <div class="carousel-item">
-              <img src="img/sg1.2.png"  class="d-block w-100" alt="samsun">
+              <img src="{% static 'menu/img/sg1.2.png' %}"  class="d-block w-100" alt="samsun">
             </div>
             <div class="carousel-item">
-              <img src="img/sg1.3.png"  class="d-block w-100" alt="samsun">
+              <img src="{% static 'menu/img/sg1.3.png' %}"  class="d-block w-100" alt="samsun">
             </div>
             <div class="carousel-item">
-              <img src="img/sg1.4.png"  class="d-block w-100" alt="samsun">
+              <img src="{% static 'menu/img/sg1.4.png' %}"  class="d-block w-100" alt="samsun">
             </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
