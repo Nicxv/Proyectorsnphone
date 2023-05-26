@@ -1,0 +1,45 @@
+.centrado{
+    text-align: center;
+}
+
+.responsive_imagenes{
+    width: 100%;
+    max-width: 300px;
+    border: 2px solid #000000;
+}
+
+.separacion{
+    margin-bottom: 5%;
+}
+
+body{
+    background-color: rgb(249, 231, 159);
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.espaciado_superior{
+    margin-top: 4%;
+}
+
+@media only screen and (max-width:450px){
+    body{
+        background-color: #04B3D2;
+    }
+
+    .responsive_imagenes{
+        width: 100%;
+        max-width: 200px;
+        border: 2px solid #000000;
+    }
+
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    height: 100px;
+    width: 100px;
+    outline: black;
+    background-color: rgba(0, 0, 0, 0.3);
+    background-size: 100%, 100%;
+    border-radius: 50%;
+    border: 1px solid black;
+}
