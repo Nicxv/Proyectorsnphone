@@ -11,6 +11,7 @@ def cambiarcontra(request):
     return render(request,'menu/cambiarcontra.html')
 
 def registro(request):
+<<<<<<< HEAD
     return render(request,'menu/registro.html') 
 
 
@@ -108,3 +109,6 @@ def borgona2(request):
         "nombres": lista
     }
     return render(request,'menu/borgona2.html',contexto)
+=======
+    return render(request,'menu/registro.html')    
+>>>>>>> e97ed44be13413cf1b5c0f801a33901cbe7a44be
