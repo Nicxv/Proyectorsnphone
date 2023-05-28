@@ -37,9 +37,15 @@ class Producto(models.Model):
     stock = models.ImageField()
     foto = models.ImageField(upload_to="Inicioproject")
 
+    def __str__(self) -> str:
+        return self.nombre
+
 class Marca(models.Model):
     id_marca = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=30)
+
+    def __str__(self) -> str:
+        return self.nombre
 
 class Sucursal(models.Model):
     id_sucursal = models.IntegerField(primary_key=True) 

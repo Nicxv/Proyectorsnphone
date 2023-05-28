@@ -16,8 +16,13 @@ def registro(request):
 
 # Vistas de celulares samsung
 def samsung(request):
-    return render(request,'menu/samsung.html')
+    arregloProductos = Producto.objects.all()
+    contexto = {
+        "productos": arregloProductos
+    }
 
+    return render(request,'menu/samsung.html')
+    
 def Samsung_galaxy_s10(request):
     return render(request,'menu/Samsung_galaxy_s10.html')
 
