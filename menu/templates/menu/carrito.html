@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+  {% load static %}
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,10 +27,10 @@
                       <a class="nav-link active" style="color: white; font-size: 17px;" aria-current="page" href="principal.html">Inicio</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" style="color: white; font-size: 17px;" href="samsung.html">Samsung</a>
+                      <a class="nav-link" style="color: white; font-size: 17px;" href="{% url 'samsung' %}">Samsung</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" style="color: white; font-size: 17px;" href="xiaomi.html">Xiaomi</a>
+                      <a class="nav-link" style="color: white; font-size: 17px;" href="{% url 'xiaomi' %}">Xiaomi</a>
                     </li>
                   </ul>
                   <li><img src="img/WhatsApp.png" width="25" height="25" alt="wsp">

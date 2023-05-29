@@ -1,12 +1,12 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import principal, samsung, xiaomi, Xiaomi_redmi_note_12, Xiaomi_mi_8_lite,Xiaomi_poco_mxi5,Xiaomi_redmi_10_5g,Xiaomi_redmi_10_2022,Xiaomi_redmi_10,Xiaomi_redmi_note_10s,Xiaomi_redmi_note_11, Samsung_galaxy_s10,Samsung_galaxy_a03,Samsung_galaxy_a22,Samsung_galaxy_a53,Samsung_galaxy_a54,Samsung_galaxy_a73,Samsung_galaxy_s23s,Samsung_galaxy_z_flip4, registro, cambiarcontra
+from .views import principal, samsung, xiaomi, Xiaomi_redmi_note_12, Xiaomi_mi_8_lite,Xiaomi_poco_mxi5,Xiaomi_redmi_10_5g,Xiaomi_redmi_10_2022,Xiaomi_redmi_10,Xiaomi_redmi_note_10s,Xiaomi_redmi_note_11, Samsung_galaxy_s10,Samsung_galaxy_a03,Samsung_galaxy_a22,Samsung_galaxy_a53,Samsung_galaxy_a54,Samsung_galaxy_a73,Samsung_galaxy_s23s,Samsung_galaxy_z_flip4, registro, cambiarcontra, micuenta
 
 urlpatterns = [
     path('',principal,name="principal"),
     path('samsung',samsung,name="samsung"),
     # Urls de xiaomi
-    path('micuenta',xiaomi,name="micuenta"),
+    path('xiaomi',xiaomi,name="xiaomi"),
     path('Xiaomi_redmi_note_12',Xiaomi_redmi_note_12,name="Xiaomi_redmi_note_12"),
     path('Xiaomi_mi_8_lite',Xiaomi_mi_8_lite,name="Xiaomi_mi_8_lite"),
     path('Xiaomi_poco_mxi5',Xiaomi_poco_mxi5,name="Xiaomi_poco_mxi5"),
@@ -26,7 +26,8 @@ urlpatterns = [
     path('Samsung_galaxy_z_flip4',Samsung_galaxy_z_flip4,name="Samsung_galaxy_z_flip4"),
 
     path('cambiarcontra',cambiarcontra,name="cambiarcontra"),
-    path('registro',registro,name="registro")
+    path('registro',registro,name="registro"),
+    path('micuenta',micuenta,name="micuenta")
 
 
     
