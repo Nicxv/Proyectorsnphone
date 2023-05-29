@@ -33,8 +33,8 @@ class Producto(models.Model):
     id_producto = models.IntegerField(primary_key=True)   
     nombre = models.CharField(max_length=30)
     descripcion = models.CharField(max_length=300)
-    precio = models.ImageField()
-    stock = models.ImageField()
+    precio = models.IntegerField()
+    stock = models.IntegerField()
     foto = models.ImageField(upload_to="Inicioproject")
 
     def __str__(self) -> str:
@@ -54,7 +54,7 @@ class Sucursal(models.Model):
 class Direccion(models.Model):
     id_direccion = models.IntegerField(primary_key=True)
     calle = models.CharField(max_length=30) 
-    numero_c = models.ImageField()
+    numero_c = models.IntegerField()
 
 class Comuna(models.Model):  
     id_comuna = models.IntegerField(primary_key=True)   

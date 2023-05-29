@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Usuario, Rol, Venta, Detalle_venta, Producto, Marca, Sucursal, Direccion, Comuna, Region
 
 # Create your views here.
 def principal(request):
