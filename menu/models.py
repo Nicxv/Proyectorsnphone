@@ -9,6 +9,8 @@ class Usuario(models.Model):
     apellido = models.CharField(max_length=20)
     correo = models.CharField(max_length=60)
     direccion = models.CharField(max_length=60)
+    clave = models.CharField(max_length=20)
+    
 
     def __str__(self) -> str:
         return self.nombre

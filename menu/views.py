@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from pyexpat.errors import messages
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth import authenticate,login, logout
+
 from .models import Usuario, Rol, Venta, Detalle_venta, Producto, Marca, Sucursal, Direccion, Comuna, Region
 
 # Create your views here.
@@ -15,9 +17,23 @@ def micuenta(request):
     try:
         user1 = User.objects.get(username = usuario1)
     except User.DoesNotExist:
-        messages.error    
+        messages.error(request,'El usuario o la contraseña son incorrectos')
+        return redirect('iniciar')  
 
-    return render(request,'menu/micuenta.html')
+    pass_valida = check_password(contra1, user1.password)
+    if not pass_valida:
+        messages.error(request,'El usuario o la contraseña son incorrectos')
+        return redirect ('iniciar')
+    usuario2 = Usuario.objects.get(correo = usuario1,psw = contra1)
+    user = authenticate(username=usuario1, password=contra1)
+    if user is not None:
+        login(request, user)
+        if(usuario2.tipousuario.idTipoUsuario ==1):
+            return redirect ('menu_admin')
+        else:
+            contexto = {"usuario":usuario2}             
+
+    return render(request,'menu/micuenta.html', contexto)
 
 
 def cambiarcontra(request):
