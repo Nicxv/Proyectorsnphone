@@ -15,6 +15,12 @@ def cambiarcontra(request):
 def registro(request):
     return render(request,'menu/registro.html') 
 
+def carrito(request):
+    return render(request,'menu/carrito.html') 
+
+def pago2(request):
+    return render(request,'menu/pago2.html') 
+
 
 # Vistas de celulares samsung
 def samsung(request):
