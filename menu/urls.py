@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import principal, samsung, xiaomi, Xiaomi_redmi_note_12, Xiaomi_mi_8_lite,Xiaomi_poco_mxi5,Xiaomi_redmi_10_5g,Xiaomi_redmi_10_2022,Xiaomi_redmi_10,Xiaomi_redmi_note_10s,Xiaomi_redmi_note_11, Samsung_galaxy_s10,Samsung_galaxy_a03,Samsung_galaxy_a22,Samsung_galaxy_a53,Samsung_galaxy_a54,Samsung_galaxy_a73,Samsung_galaxy_s23s,Samsung_galaxy_z_flip4, registro, cambiarcontra, micuenta
+from .views import principal, samsung, xiaomi, pago2, Xiaomi_redmi_note_12, Xiaomi_mi_8_lite,Xiaomi_poco_mxi5,Xiaomi_redmi_10_5g,Xiaomi_redmi_10_2022,Xiaomi_redmi_10,Xiaomi_redmi_note_10s,Xiaomi_redmi_note_11, Samsung_galaxy_s10,Samsung_galaxy_a03,Samsung_galaxy_a22,Samsung_galaxy_a53,Samsung_galaxy_a54,Samsung_galaxy_a73,Samsung_galaxy_s23s,Samsung_galaxy_z_flip4, registro, cambiarcontra, micuenta, carrito
 
 urlpatterns = [
     path('',principal,name="principal"),
@@ -27,7 +27,9 @@ urlpatterns = [
 
     path('cambiarcontra',cambiarcontra,name="cambiarcontra"),
     path('registro',registro,name="registro"),
-    path('micuenta',micuenta,name="micuenta")
+    path('micuenta',micuenta,name="micuenta"),
+    path('carrito',carrito,name="carrito"),
+    path('pago2',pago2,name="pago2")
 
 
     
