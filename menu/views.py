@@ -7,7 +7,16 @@ def principal(request):
     return render(request,'menu/principal.html')
     
 def micuenta(request):
+
+    usuario1 = request.post['usuario']
+    contra1 = request.post['contra']
+    try:
+        user1 = User.objects.get(username = usuario1)
+    except User.DoesNotExist:
+        messages.error    
+
     return render(request,'menu/micuenta.html')
+
 
 def cambiarcontra(request):
     return render(request,'menu/cambiarcontra.html')

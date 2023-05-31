@@ -20,9 +20,9 @@ urlpatterns = [
     path('Samsung_galaxy_a03',Samsung_galaxy_a03,name="Samsung_galaxy_a03"),
     path('Samsung_galaxy_a22',Samsung_galaxy_a22,name="Samsung_galaxy_a22"),
     path('Samsung_galaxy_a53',Samsung_galaxy_a53,name="Samsung_galaxy_a53"),
-    path('Samsung_galaxy_a54',Samsung_galaxy_a54 ,name="Samsung_galaxy_a54 "),
+    path('Samsung_galaxy_a54',Samsung_galaxy_a54 ,name="Samsung_galaxy_a54"),
     path('Samsung_galaxy_a73',Samsung_galaxy_a73,name="Samsung_galaxy_a73"),
-    path('SSamsung_galaxy_s23s',Samsung_galaxy_s23s,name="Samsung_galaxy_s23s"),
+    path('Samsung_galaxy_s23s',Samsung_galaxy_s23s,name="Samsung_galaxy_s23s"),
     path('Samsung_galaxy_z_flip4',Samsung_galaxy_z_flip4,name="Samsung_galaxy_z_flip4"),
 
     path('cambiarcontra',cambiarcontra,name="cambiarcontra"),
