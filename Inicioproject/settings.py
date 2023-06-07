@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'menu',
     'rest_framework',
     'apirest',
+    
 ]
 
 MIDDLEWARE = [
