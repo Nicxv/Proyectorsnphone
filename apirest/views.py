@@ -28,7 +28,7 @@ def lista_usuario(request):
         else:
             return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
         
-@csrf_exempt
+
 @api_view(['GET', 'POST'])
 def lista_venta(request):
     if request.method == 'GET':
@@ -44,3 +44,4 @@ def lista_venta(request):
             return Response(serializer.data, status= status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
+
