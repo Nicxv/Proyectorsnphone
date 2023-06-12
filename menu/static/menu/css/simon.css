@@ -14,12 +14,7 @@ body{
     font-size: 13px;
     
 }
-.wasa{
-    display: inline-block;
-    color: white;
-    line-height: 2px;
-    
-}
+
 .num{
     display: block;
     color: white;
@@ -90,6 +85,7 @@ body{
     margin-top: -17px;
     font-size: 18px;
   }
+
   
   /* Change styles for span and cancel button on extra small screens */
   @media screen and (max-width: 300px) {
@@ -97,5 +93,6 @@ body{
       display: block;
       float: none;
     }
+
     
   }

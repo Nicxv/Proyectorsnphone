@@ -9,7 +9,11 @@ from .models import Usuario, Rol, Venta, Detalle_venta, Producto, Marca, Sucursa
 # Create your views here.
 def principal(request):
     return render(request,'menu/principal.html')
-    
+
+
+def inicio_sesion(request):
+    return render(request,'menu/micuenta.html')    
+
 def micuenta(request):
 
     usuario1 = request.post['usuario']
