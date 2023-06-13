@@ -43,6 +43,25 @@ def micuenta(request):
 def cambiarcontra(request):
     return render(request,'menu/cambiarcontra.html')
 
+def registrar_usuario(request):
+    if request.method == 'POST':
+        rut = request.POST['rut']
+        nombre = request.POST['nombre']
+        apellido = request.POST['apellido']
+        correo = request.POST['correo']
+        direccion = request.POST['direccion']
+        clave = request.POST['password']
+        
+        usuario = Usuario(rut=rut, nombre=nombre, apellido=apellido, correo=correo, direccion=direccion, clave=clave)
+        usuario.save()
+        
+        return redirect('exito')
+    
+    return render(request, 'registro.html')
+
+def exito(request):
+    return render(request, 'exito.html')
+
 def registro(request):
     return render(request,'menu/registro.html') 
 

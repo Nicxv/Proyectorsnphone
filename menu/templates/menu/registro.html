@@ -50,9 +50,19 @@
     <div class="container ajustar_cont">
     <div class="row">
       <div class="col-md-12" style="text-align: center;">
-        <form action="" method="POST" id="form">
+        <form action="{% url 'registro' %}" method="POST" id="form">
+          {% csrf_token %}
           <div class="form">
             <h1>Regístrate Aquí</h1>
+
+              <div class="grupo">
+                  
+                <input type="text" placeholder="Ingrese su rut" name="" id="rut"><span class="barra" required></span>
+                <label for="">Rut</label>
+
+              </div>
+
+
               <div class="grupo">
                   
                   <input type="text" placeholder="Ingrese su nombre" name="" id="name" pattern="[a-zA-Z]+"><span class="barra" required></span>
@@ -71,6 +81,13 @@
                   <label for="">Correo Electronico</label>
 
               </div>
+
+              <div class="grupo">
+                  
+                <input type="text" placeholder="Ingresa tu dirección" name="" id="dirección"><span class="barra" required></span>
+                <label for="">Dirección</label>
+
+            </div>
               
               
 
@@ -82,15 +99,7 @@
 
               </div>
              
-              <div class="grupo">
-                  
-                <input type="password" placeholder="Repita la contraseña" name="" id="password"><span class="barra" required></span>
-                <label for="">Repita la contraseña</label>
-
-              </div>
-             
-
-            <button id="editarbtn" type="submit">Registrarse</button>
+            <button id="editarbtn"  type="submit">Registrarse</button>
             <p class="warnings" id="warnings"></p>
 
           </div>    
