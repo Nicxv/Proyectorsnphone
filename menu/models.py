@@ -37,7 +37,6 @@ class Producto(models.Model):
     descripcion = models.CharField(max_length=300)
     precio = models.IntegerField()
     stock = models.IntegerField()
-    foto = models.ImageField(upload_to="Inicioproject")
 
     def __str__(self) -> str:
         return self.nombre

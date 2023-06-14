@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth import authenticate,login, logout
 
+from menu.forms import ProductoForm
+
 from .models import Usuario, Rol, Venta, Detalle_venta, Producto, Marca, Sucursal, Direccion, Comuna, Region
 
 # Create your views here.
@@ -43,25 +45,6 @@ def micuenta(request):
 def cambiarcontra(request):
     return render(request,'menu/cambiarcontra.html')
 
-def registrar_usuario(request):
-    if request.method == 'POST':
-        rut = request.POST['rut']
-        nombre = request.POST['nombre']
-        apellido = request.POST['apellido']
-        correo = request.POST['correo']
-        direccion = request.POST['direccion']
-        clave = request.POST['password']
-        
-        usuario = Usuario(rut=rut, nombre=nombre, apellido=apellido, correo=correo, direccion=direccion, clave=clave)
-        usuario.save()
-        
-        return redirect('exito')
-    
-    return render(request, 'registro.html')
-
-def exito(request):
-    return render(request, 'exito.html')
-
 def registro(request):
     return render(request,'menu/registro.html') 
 
@@ -72,7 +55,32 @@ def pago2(request):
     return render(request,'menu/pago2.html') 
 
 
-# Vistas de celulares samsung
+# listas de celulares samsung
+def listacelular(request):
+
+    celulares = Producto.objects.all()
+
+    datos = {
+        'celulares': celulares
+    }
+    return render(request,'menu/listacelular.html', datos)
+
+
+def form_celular(request):
+
+    datos = {
+        'form': ProductoForm()
+
+    }
+    if request.method== 'POST':
+        formulario = ProductoForm(request.POST)
+        if formulario.is_valid:
+            formulario.save()
+            datos['mensaje'] = "Guardados correctamente"
+
+    return render(request,'menu/form_celular.html', datos)
+
+
 def samsung(request):
     arregloProductos = Producto.objects.all()
     contexto = {
