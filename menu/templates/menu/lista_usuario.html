@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de celulares</title>
+    <!-- CSS Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">      
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="container">
+           <div class="row">
+              <h1>Listado de Usuarios</h1>
+           </div>
+               <div class="row">
+                  <table class="table table-responsive table-striped" border="1">
+                    <tr>
+                        <td>Id</td>
+                        <td>rut</td>
+                        <td>Nombre</td>
+                        <td>Apellido</td>
+                        <td>Correo</td>
+                        <td>Direccion</td>
+                        <td>Clave</td>
+                    </tr>
+                    {% for i in usuarios %}
+                    <tr>
+                        <td> {{i.id_usuario}}</td>
+                        <td> {{i.rut}}</td>
+                        <td> {{i.nombre}}</td>
+                        <td> {{i.apellido}}</td>
+                        <td> {{i.correo}}</td>
+                        <td> {{i.direccion}}</td>
+                        <td> {{i.clave}}</td>
+                    </tr>
+                    {% endfor %}
+
+                   </table>
+           </div>
+        </div>
+    </div>
+
+   
+    <!-- JS Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+  </div> 
+
+</body>
+</html>

@@ -46,7 +46,10 @@ def cambiarcontra(request):
     return render(request,'menu/cambiarcontra.html')
 
 def registro(request):
-    return render(request,'menu/registro.html') 
+    return render(request,'menu/registro.html')
+
+def registrarse(request):
+    return render(request,'menu/registrarse.html')  
 
 def carrito(request):
     return render(request,'menu/carrito.html') 
@@ -56,6 +59,17 @@ def pago2(request):
 
 
 # listas de celulares samsung
+def lista_usuario(request):
+
+    usuarios = Usuario.objects.all()
+
+    listaU = {
+        'usuarios': usuarios
+    }
+    return render(request,'menu/lista_usuario.html', listaU)
+
+
+
 def listacelular(request):
 
     celulares = Producto.objects.all()
