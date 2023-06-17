@@ -1,8 +1,10 @@
 from pyexpat.errors import messages
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth import authenticate,login, logout
+from django.views.decorators.csrf import csrf_exempt
 
 from menu.forms import ProductoForm
 
@@ -11,35 +13,27 @@ from .models import Usuario, Rol, Venta, Detalle_venta, Producto, Marca, Sucursa
 # Create your views here.
 def principal(request):
     return render(request,'menu/principal.html')
+   
+def iniciar_sesion(request):
+    if request.method == 'POST':
+        nombre = request.POST.get('nombre')
+        clave = request.POST.get('clave')
 
+        usuario = authenticate(request, username=nombre, password=clave)
 
-def inicio_sesion(request):
-    return render(request,'menu/micuenta.html')    
-
-def micuenta(request):
-
-    usuario1 = request.post['usuario']
-    contra1 = request.post['contra']
-    try:
-        user1 = User.objects.get(username = usuario1)
-    except User.DoesNotExist:
-        messages.error(request,'El usuario o la contraseña son incorrectos')
-        return redirect('iniciar')  
-
-    pass_valida = check_password(contra1, user1.password)
-    if not pass_valida:
-        messages.error(request,'El usuario o la contraseña son incorrectos')
-        return redirect ('iniciar')
-    usuario2 = Usuario.objects.get(correo = usuario1,psw = contra1)
-    user = authenticate(username=usuario1, password=contra1)
-    if user is not None:
-        login(request, user)
-        if(usuario2.tipousuario.idTipoUsuario ==1):
-            return redirect ('menu_admin')
+        if usuario is not None:
+            # Iniciar sesión
+            login(request, usuario)
+            mensaje_exito = "¡Inicio de sesión exitoso!"
+            return redirect('principal')  # Redirigir a la página de inicio después del inicio de sesión
         else:
-            contexto = {"usuario":usuario2}             
-
-    return render(request,'menu/micuenta.html', contexto)
+            # Las credenciales son incorrectas, mostrar un mensaje de error
+            mensaje_error = "Nombre o contraseña incorrectos"
+            return render(request, 'menu/micuenta.html', {'mensaje_error': mensaje_error})
+    return render(request, 'menu/micuenta.html')    
+    
+def micuenta(request):
+    return render(request,'menu/micuenta.html')
 
 
 def cambiarcontra(request):
@@ -47,6 +41,24 @@ def cambiarcontra(request):
 
 def registro(request):
     return render(request,'menu/registro.html')
+
+@csrf_exempt
+def guardar_registro(request):
+    if request.method == 'POST':
+        rut = request.POST.get('rut')
+        nombre = request.POST.get('nombre')
+        apellido = request.POST.get('apellido')
+        correo = request.POST.get('correo')
+        direccion = request.POST.get('direccion')
+        clave = request.POST.get('clave')
+        
+        registro = Usuario(rut=rut, nombre=nombre, apellido=apellido, correo=correo, direccion=direccion, clave=clave)
+        registro.save()
+        
+        return render(request, 'menu/exito.html')
+
+def exito(request):
+    return render(request,'menu/exito.html')    
 
 def registrarse(request):
     return render(request,'menu/registrarse.html')  
@@ -58,7 +70,7 @@ def pago2(request):
     return render(request,'menu/pago2.html') 
 
 
-# listas de celulares samsung
+# listas 
 def lista_usuario(request):
 
     usuarios = Usuario.objects.all()
@@ -94,7 +106,7 @@ def form_celular(request):
 
     return render(request,'menu/form_celular.html', datos)
 
-
+# Celulales samsung
 def samsung(request):
     arregloProductos = Producto.objects.all()
     contexto = {
@@ -102,6 +114,7 @@ def samsung(request):
     }
 
     return render(request,'menu/samsung.html')
+
     
 def Samsung_galaxy_s10(request):
     return render(request,'menu/Samsung_galaxy_s10.html')

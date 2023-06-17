@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import registrarse,lista_usuario, form_celular, listacelular, inicio_sesion, principal, samsung, xiaomi, pago2, Xiaomi_redmi_note_12, Xiaomi_mi_8_lite,Xiaomi_poco_mxi5,Xiaomi_redmi_10_5g,Xiaomi_redmi_10_2022,Xiaomi_redmi_10,Xiaomi_redmi_note_10s,Xiaomi_redmi_note_11, Samsung_galaxy_s10,Samsung_galaxy_a03,Samsung_galaxy_a22,Samsung_galaxy_a53,Samsung_galaxy_a54,Samsung_galaxy_a73,Samsung_galaxy_s23s,Samsung_galaxy_z_flip4, registro, cambiarcontra, micuenta, carrito
+from .views import iniciar_sesion, exito, guardar_registro, registrarse, lista_usuario, form_celular, listacelular, principal, samsung, xiaomi, pago2, Xiaomi_redmi_note_12, Xiaomi_mi_8_lite,Xiaomi_poco_mxi5,Xiaomi_redmi_10_5g,Xiaomi_redmi_10_2022,Xiaomi_redmi_10,Xiaomi_redmi_note_10s,Xiaomi_redmi_note_11, Samsung_galaxy_s10,Samsung_galaxy_a03,Samsung_galaxy_a22,Samsung_galaxy_a53,Samsung_galaxy_a54,Samsung_galaxy_a73,Samsung_galaxy_s23s,Samsung_galaxy_z_flip4, registro, cambiarcontra, micuenta, carrito
 
 urlpatterns = [
     path('',principal,name="principal"),
@@ -31,11 +31,14 @@ urlpatterns = [
     path('micuenta',micuenta,name="micuenta"),
     path('carrito',carrito,name="carrito"),
     path('pago2',pago2,name="pago2"),
-    path('inicio_sesion',inicio_sesion,name="inicio_sesion"),
     #listas
     path('listacelular',listacelular,name="listacelular"),
     path('form_celular',form_celular,name="form_celular"),
-    path('lista_usuario',lista_usuario,name="lista_usuario")
+    path('lista_usuario',lista_usuario,name="lista_usuario"),
+    path('guardar_registro/',guardar_registro,name="guardar_registro"),
+    path('exito',exito,name="exito"),
+    path('iniciar_sesion/',iniciar_sesion,name="iniciar_sesion"),
+    
 
  
 ]

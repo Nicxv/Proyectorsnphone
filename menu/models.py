@@ -3,7 +3,6 @@ from django.db import models
 # Create your models here.
 
 class Usuario(models.Model):
-    id_usuario = models.IntegerField(primary_key=True)
     rut = models.CharField(max_length=12)
     nombre = models.CharField(max_length=20)
     apellido = models.CharField(max_length=20)
@@ -11,9 +10,6 @@ class Usuario(models.Model):
     direccion = models.CharField(max_length=60)
     clave = models.CharField(max_length=20)
     
-
-    def __str__(self) -> str:
-        return self.nombre
 
 class Rol(models.Model): 
     id_rol = models.IntegerField(primary_key=True)
@@ -38,8 +34,6 @@ class Producto(models.Model):
     precio = models.IntegerField()
     stock = models.IntegerField()
 
-    def __str__(self) -> str:
-        return self.nombre
 
 class Marca(models.Model):
     id_marca = models.IntegerField(primary_key=True)

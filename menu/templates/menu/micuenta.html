@@ -59,18 +59,26 @@
 
         
 
-      <form action="{% url 'micuenta' %}" method="post">
+      <form action="{% url 'iniciar_sesion' %}" method="post">
         {% csrf_token %}
         <div class="col-md-12 col-sm-12">
           <p class="ti">Iniciar Sesión</p>
         </div>
       
         <div class="container">
-          <label for="uname"><b>Correo electrónico</b></label>
-          <input type="text" placeholder="Ingresar correo" name="uname" pattern="[a-zA-Z]+" required>
+          <label for="uname"><b>Nombre</b></label>
+          <input type="text" placeholder="Ingresar Nombre" name="nombre" required>
       
           <label for="psw"><b>Contraseña</b></label>
-          <input type="password" placeholder="Ingresar Contraseña" name="psw" required>
+          <input type="password" placeholder="Ingresar Contraseña" name="clave" required>
+
+          {% if mensaje_exito %}
+            <div class="mensaje-exito">{{ mensaje_exito }}</div>
+          {% endif %}
+  
+          {% if mensaje_error %}
+            <div class="mensaje-error">{{ mensaje_error }}</div>
+          {% endif %}
       
           <button type="submit">Ingresar</button>
           <label>
@@ -79,7 +87,7 @@
         </div>
       
         <div class="container">
-          <a href="{% url 'registro' %}" class="btnbtn-success">Registrarse</a>
+          <a href="{% url 'registrarse' %}" class="btnbtn-success">Registrarse</a>
           <span class="psw"> <a href="{% url 'cambiarcontra' %}">¿Olvidaste tu contraseña?</a></span>
         </div>
       </form>

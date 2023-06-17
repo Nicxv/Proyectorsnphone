@@ -65,11 +65,8 @@
 <body>
   <div class="container">
     <h2>Formulario de Registro</h2>
-    <form id="registration-form" action="#" method="POST">
+    <form id="registration-form" action="{% url 'guardar_registro' %}" method="POST">
         {% csrf_token %}
-      <label for="id_usuario">ID de Usuario:</label>
-      <input type="text" id="id_usuario" name="id_usuario" required>
-      
       <label for="rut">RUT:</label>
       <input type="text" id="rut" name="rut" required>
       
