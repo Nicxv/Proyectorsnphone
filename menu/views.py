@@ -64,12 +64,21 @@ def exito(request):
 #modificar producto
 
 def modificar_producto(request, id): 
-
+    
     producto = Producto.objects.get(id_producto=id)
 
     datos = {
         'form' : ProductoForm(instance=producto)
     }
+
+    if request.method== "POST":
+        formulario = ProductoForm(data=request.POST,instance=producto)
+        if formulario.is_valid:
+            formulario.save()
+            datos['mensaje'] = "Modificados correctamente"
+
+            return redirect('listacelular')
+
 
     return render(request,'menu/modificar_producto.html', datos) 
 
@@ -117,7 +126,8 @@ def registrar_celular(request):
         registrar = Producto(id_producto, nombre=nombre, descripcion=descripcion, precio=precio, stock=stock)
         registrar.save()
         
-        return render(request, 'menu/form_celular.html')
+        return redirect('listacelular')
+        
     
 def form_celular(request):
     return render(request, 'menu/form_celular.html')    
