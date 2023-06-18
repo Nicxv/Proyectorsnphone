@@ -54,11 +54,24 @@ def guardar_registro(request):
         
         registro = Usuario(rut=rut, nombre=nombre, apellido=apellido, correo=correo, direccion=direccion, clave=clave)
         registro.save()
+
         
         return render(request, 'menu/exito.html')
 
 def exito(request):
-    return render(request,'menu/exito.html')    
+    return render(request,'menu/exito.html')  
+
+#modificar producto
+
+def modificar_producto(request, id): 
+
+    producto = Producto.objects.get(id_producto=id)
+
+    datos = {
+        'form' : ProductoForm(instance=producto)
+    }
+
+    return render(request,'menu/modificar_producto.html', datos) 
 
 def registrarse(request):
     return render(request,'menu/registrarse.html')  
@@ -91,20 +104,23 @@ def listacelular(request):
     }
     return render(request,'menu/listacelular.html', datos)
 
+@csrf_exempt
+def registrar_celular(request):
 
+    if request.method == 'POST':
+        id_producto = request.POST.get('id_producto')
+        nombre = request.POST.get('nombre')
+        descripcion = request.POST.get('descripcion')
+        precio = request.POST.get('precio')
+        stock = request.POST.get('stock')
+        
+        registrar = Producto(id_producto, nombre=nombre, descripcion=descripcion, precio=precio, stock=stock)
+        registrar.save()
+        
+        return render(request, 'menu/form_celular.html')
+    
 def form_celular(request):
-
-    datos = {
-        'form': ProductoForm()
-
-    }
-    if request.method== 'POST':
-        formulario = ProductoForm(request.POST)
-        if formulario.is_valid:
-            formulario.save()
-            datos['mensaje'] = "Guardados correctamente"
-
-    return render(request,'menu/form_celular.html', datos)
+    return render(request, 'menu/form_celular.html')    
 
 # Celulales samsung
 def samsung(request):
