@@ -78,9 +78,14 @@ def modificar_producto(request, id):
             datos['mensaje'] = "Modificados correctamente"
 
             return redirect('listacelular')
-
-
+    
     return render(request,'menu/modificar_producto.html', datos) 
+
+def eliminar_prducto(request, id):
+    producto =Producto.objects.get(id_producto=id)
+    producto.delete()
+    return redirect(to="listacelular") 
+
 
 def registrarse(request):
     return render(request,'menu/registrarse.html')  

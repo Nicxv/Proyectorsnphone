@@ -41,10 +41,12 @@
                         <td> {{x.precio}}</td>
                         <td> {{x.stock}}</td>
                         <td><a translate="no" class="mod" href="{% url 'modificar_producto' x.id_producto %}">Modificar</a></td>
+                        <td><a translate="no" class="mod" href="{% url 'eliminar_producto' x.id_producto %}">Eliminar</a></td>
                     </tr>
                     {% endfor %}
 
                    </table>
+                   <a href="{% url 'form_celular' %}"></a>
            </div>
         </div>
     </div>
