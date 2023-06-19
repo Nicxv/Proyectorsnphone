@@ -15,22 +15,19 @@ def principal(request):
     return render(request,'menu/principal.html')
    
 def iniciar_sesion(request):
-    if request.method == 'POST':
-        nombre = request.POST.get('nombre')
-        clave = request.POST.get('clave')
+        nombre = request.POST['nombre']
+        clave = request.POST['clave']
+        nombre = authenticate(request, username=nombre, password=clave)
 
-        usuario = authenticate(request, username=nombre, password=clave)
-
-        if usuario is not None:
+        if nombre is not None:
             # Iniciar sesión
-            login(request, usuario)
-            mensaje_exito = "¡Inicio de sesión exitoso!"
+            login(request, nombre)
+            mensaje_exito = "Usuario Autenticado"
             return redirect('principal')  # Redirigir a la página de inicio después del inicio de sesión
         else:
             # Las credenciales son incorrectas, mostrar un mensaje de error
             mensaje_error = "Nombre o contraseña incorrectos"
-            return render(request, 'menu/micuenta.html', {'mensaje_error': mensaje_error})
-    return render(request, 'menu/micuenta.html')    
+            return render(request,'menu/micuenta.html')   
     
 def micuenta(request):
     return render(request,'menu/micuenta.html')
@@ -62,29 +59,35 @@ def exito(request):
     return render(request,'menu/exito.html')  
 
 #modificar producto
+def actualizar_producto(request):
+    id_productoM = request.POST['id_producto']
+    nombreM = request.POST['nombre']
+    descripcionM = request.POST['descripcion']
+    precioM = request.POST['precio']
+    stockM = request.POST['stock']
 
-def modificar_producto(request, id): 
+    producto = Producto.objects.get(id_producto = id_productoM)
+    producto.nombre = nombreM
+    producto.descripcion = descripcionM
+    producto.precio = precioM
+    producto.stock = stockM
+
+    producto.save()
+    return redirect('listacelular')
+
+def modificar_producto(request, id_producto): 
     
-    producto = Producto.objects.get(id_producto=id)
+    producto = Producto.objects.get(id_producto = id_producto)
 
-    datos = {
-        'form' : ProductoForm(instance=producto)
+    contexto = {
+        "datos": producto 
     }
+    return render(request,'menu/modificar_producto.html',contexto) 
 
-    if request.method== "POST":
-        formulario = ProductoForm(data=request.POST,instance=producto)
-        if formulario.is_valid:
-            formulario.save()
-            datos['mensaje'] = "Modificados correctamente"
-
-            return redirect('listacelular')
-    
-    return render(request,'menu/modificar_producto.html', datos) 
-
-def eliminar_prducto(request, id):
-    producto =Producto.objects.get(id_producto=id)
+def eliminar_producto(request, id_producto):
+    producto = Producto.objects.get(id_producto=id_producto)
     producto.delete()
-    return redirect(to="listacelular") 
+    return redirect("listacelular") 
 
 
 def registrarse(request):
@@ -137,7 +140,7 @@ def registrar_celular(request):
 def form_celular(request):
     return render(request, 'menu/form_celular.html')    
 
-# Celulales samsung
+# Celulares samsung
 def samsung(request):
     arregloProductos = Producto.objects.all()
     contexto = {
@@ -199,6 +202,15 @@ def Xiaomi_redmi_note_10s(request):
 
 def Xiaomi_redmi_note_11(request):
     return render(request,'menu/Xiaomi_redmi_note_11.html')   
+
+def PantallaAdmin2(request):
+    return render(request, 'menu/PantallaAdmin2.html')
+
+def boleta(request):
+    return render(request, 'menu/boleta.html')
+
+def carrito2(request):
+    return render(request, 'menu/carrito2.html')
 
 
 

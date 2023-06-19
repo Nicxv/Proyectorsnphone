@@ -35,18 +35,18 @@
                     </tr>
                     {% for x in celulares %}
                     <tr>
-                        <td> {{x.id_producto}}</td>
-                        <td> {{x.nombre}}</td>
-                        <td> {{x.descripcion}}</td>
-                        <td> {{x.precio}}</td>
-                        <td> {{x.stock}}</td>
-                        <td><a translate="no" class="mod" href="{% url 'modificar_producto' x.id_producto %}">Modificar</a></td>
-                        <td><a translate="no" class="mod" href="{% url 'eliminar_producto' x.id_producto %}">Eliminar</a></td>
+                        <td>{{x.id_producto}}</td>
+                        <td>{{x.nombre}}</td>
+                        <td>{{x.descripcion}}</td>
+                        <td>{{x.precio}}</td>
+                        <td>{{x.stock}}</td>
+                        <td><a translate="no"  href="{% url 'modificar_producto' x.id_producto %}" class="btn btn-primary">Modificar</a></td>
+                        <td><a translate="no"  href="{% url 'eliminar_producto' x.id_producto %}" class="btn btn-danger">Eliminar</a></td>
                     </tr>
                     {% endfor %}
 
                    </table>
-                   <a href="{% url 'form_celular' %}"></a>
+                   <a href="{% url 'form_celular' %}" class="btn btn-primary">Agregar nuevo producto</a>
            </div>
         </div>
     </div>
