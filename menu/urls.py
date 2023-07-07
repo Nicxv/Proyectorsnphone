@@ -37,7 +37,7 @@ urlpatterns = [
     path('lista_usuario',lista_usuario,name="lista_usuario"),
     path('guardar_registro/',guardar_registro,name="guardar_registro"),
     path('exito',exito,name="exito"),
-    path('iniciar_sesion/',iniciar_sesion,name="iniciar_sesion"),
+    path('iniciar_sesion',iniciar_sesion,name="iniciar_sesion"),
 
     #Admin
     path('PantallaAdmin2',PantallaAdmin2,name="PantallaAdmin2"),

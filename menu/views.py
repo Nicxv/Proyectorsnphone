@@ -15,13 +15,13 @@ def principal(request):
     return render(request,'menu/principal.html')
    
 def iniciar_sesion(request):
-        nombre = request.POST['nombre']
+        correo = request.POST['correo']
         clave = request.POST['clave']
-        nombre = authenticate(request, username=nombre, password=clave)
+        correo = authenticate(request, username=correo, password=clave)
 
-        if nombre is not None:
+        if correo is not None:
             # Iniciar sesión
-            login(request, nombre)
+            login(request, correo)
             mensaje_exito = "Usuario Autenticado"
             return redirect('principal')  # Redirigir a la página de inicio después del inicio de sesión
         else:
