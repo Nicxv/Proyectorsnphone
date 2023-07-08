@@ -39,20 +39,40 @@ def cambiarcontra(request):
 def registro(request):
     return render(request,'menu/registro.html')
 
-@csrf_exempt
-def guardar_registro(request):
-    if request.method == 'POST':
-        rut = request.POST.get('rut')
-        nombre = request.POST.get('nombre')
-        apellido = request.POST.get('apellido')
-        correo = request.POST.get('correo')
-        direccion = request.POST.get('direccion')
-        clave = request.POST.get('clave')
-        
-        registro = Usuario(rut=rut, nombre=nombre, apellido=apellido, correo=correo, direccion=direccion, clave=clave)
-        registro.save()
 
+def guardar_registro(request):
+        contexto = {} 
+
+        vRutU = request.POST['rut']
+        contexto["rut"]=vRutU
+
+        vNombreU = request.POST['nombre']
+        contexto["nombre"]=vNombreU
+
+        vApellidoU = request.POST['apellido']
+        contexto["apellido"]=vApellidoU
+
+        vCorreoU = request.POST['correo']
+        contexto["correo"]=vCorreoU
+
+        vDireccionU = request.POST['direccion']
+        contexto["direccion"]=vDireccionU
+
+        vClaveU = request.POST['clave']
+        contexto["clave"]=vClaveU
+
+        valida = Usuario.objects.all()
+
+        for forcorreo in valida:
+            if forcorreo.correo == vCorreoU:
+                messages.error(request,"El correo ya existe")
+                return render(request,'menu/registrarse.html',contexto)
+            
+        Usuario.objects.create(rut=vRutU, nombre=vNombreU, apellido=vApellidoU, correo=vCorreoU,
+                               direccion=vDireccionU, clave=vClaveU)    
         
+        user = User.objects.create_user(vCorreoU,vCorreoU, vClaveU)
+
         return render(request, 'menu/exito.html')
 
 def exito(request):

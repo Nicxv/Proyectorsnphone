@@ -3,6 +3,7 @@ from django.db import models
 # Create your models here.
 
 class Usuario(models.Model):
+    id_usuario = models.AutoField(primary_key=True)
     rut = models.CharField(max_length=12)
     nombre = models.CharField(max_length=20)
     apellido = models.CharField(max_length=20)
@@ -33,6 +34,7 @@ class Producto(models.Model):
     descripcion = models.CharField(max_length=300)
     precio = models.IntegerField()
     stock = models.IntegerField()
+    foto = models.ImageField(upload_to='celular')
 
 
 class Marca(models.Model):
