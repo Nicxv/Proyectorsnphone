@@ -31,6 +31,7 @@
                         <th>Descripción</th>
                         <th>Precio</th>
                         <th>Stock</th>
+                        <th>Foto</th>
                         <th>Opciones</th>
                     </tr>
                     {% for x in celulares %}
@@ -40,6 +41,7 @@
                         <td>{{x.descripcion}}</td>
                         <td>{{x.precio}}</td>
                         <td>{{x.stock}}</td>
+                        <td>{{x.foto}}</td>
                         <td><a translate="no"  href="{% url 'modificar_producto' x.id_producto %}" class="btn btn-primary">Modificar</a></td>
                         <td><a translate="no"  href="{% url 'eliminar_producto' x.id_producto %}" class="btn btn-danger">Eliminar</a></td>
                     </tr>

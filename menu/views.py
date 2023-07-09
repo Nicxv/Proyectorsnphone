@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth import authenticate,login, logout
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 
 from menu.forms import ProductoForm
 
@@ -13,23 +14,70 @@ from .models import Usuario, Rol, Venta, Detalle_venta, Producto, Marca, Sucursa
 # Create your views here.
 def principal(request):
     return render(request,'menu/principal.html')
+
+def verperfil(request):
+
+    verUsuario = Usuario.objects.all()
+
+    contexto = {
+        "vUsuario": verUsuario
+    }
+    return render(request,'menu/verperfil.html', contexto)
+
+def actualizar_usuario(request):
+    rutM = request.POST['rut']
+    nombreM = request.POST['nombre']
+    apellidoM = request.POST['apellido']
+    direccionM = request.POST['direccion']
+
+    usuario = Usuario.objects.get(rut = rutM)
+    if rutM !='':
+        usuario.rut=rutM
+
+    if nombreM !='':
+        usuario.nombre=nombreM
+
+    if apellidoM !='':
+        usuario.apellido=apellidoM
+
+    if direccionM !='':
+        usuario.direccion=direccionM
+
+    usuario.save()
+
+    contexto = {
+        "modificarU": usuario
+    }
+    
+    return render(request, 'menu/micuenta.html',contexto)
+
+def modificar_usuario(request, id):
+
+    usuarioM = Usuario.objects.get(id_usuario = id)
+
+    contexto = {
+        "modU": usuarioM 
+    }
+    return render(request,'menu/modificar_usuario.html',contexto)
    
 def iniciar_sesion(request):
-        correo = request.POST['correo']
-        clave = request.POST['clave']
-        correo = authenticate(request, username=correo, password=clave)
+        vCorreo = request.POST['correo']
+        vClave = request.POST['clave']
+        registro = Usuario.objects.all()
+        correo = authenticate(request, username=vCorreo, password=vClave)
 
         if correo is not None:
             # Iniciar sesión
             login(request, correo)
             mensaje_exito = "Usuario Autenticado"
-            return redirect('principal')  # Redirigir a la página de inicio después del inicio de sesión
+            return redirect('principal2')  # Redirigir a la página de inicio después del inicio de sesión
         else:
             # Las credenciales son incorrectas, mostrar un mensaje de error
             mensaje_error = "Nombre o contraseña incorrectos"
             return render(request,'menu/micuenta.html')   
     
 def micuenta(request):
+    logout(request)
     return render(request,'menu/micuenta.html')
 
 
@@ -141,20 +189,20 @@ def listacelular(request):
     }
     return render(request,'menu/listacelular.html', datos)
 
-@csrf_exempt
+
 def registrar_celular(request):
 
-    if request.method == 'POST':
-        id_producto = request.POST.get('id_producto')
-        nombre = request.POST.get('nombre')
-        descripcion = request.POST.get('descripcion')
-        precio = request.POST.get('precio')
-        stock = request.POST.get('stock')
+    pid_producto = request.POST['id_producto']
+    pnombre = request.POST['nombre']
+    pdescripcion = request.POST['descripcion']
+    pprecio = request.POST['precio']
+    pstock = request.POST['stock']
+    pfoto = request.FILES['fotop']
+
+    Producto.objects.create(id_producto=pid_producto, nombre=pnombre, descripcion=pdescripcion,
+                            precio=pprecio, stock=pstock, foto=pfoto)
         
-        registrar = Producto(id_producto, nombre=nombre, descripcion=descripcion, precio=precio, stock=stock)
-        registrar.save()
-        
-        return redirect('listacelular')
+    return redirect('listacelular')
         
     
 def form_celular(request):
@@ -232,6 +280,8 @@ def boleta(request):
 def carrito2(request):
     return render(request, 'menu/carrito2.html')
 
+def principal2(request):
+    return render(request, 'menu/principal2.html')
 
 
 
