@@ -41,7 +41,7 @@ urlpatterns = [
 
     #Admin
     path('PantallaAdmin2',PantallaAdmin2,name="PantallaAdmin2"),
-    path('modificar_producto/<int:id>',modificar_producto,name="modificar_producto"),
+    path('modificar_producto/<id_producto>',modificar_producto,name="modificar_producto"),
     path('registrar_celular/',registrar_celular,name="registrar_celular"),
     path('eliminar_producto/<id_producto>',eliminar_producto,name="eliminar_producto"),
     path('actualizar_producto/',actualizar_producto,name="actualizar_producto"),

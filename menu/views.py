@@ -131,12 +131,14 @@ def actualizar_producto(request):
     descripcionM = request.POST['descripcion']
     precioM = request.POST['precio']
     stockM = request.POST['stock']
+    fotoM = request.FILES['foto']
 
     producto = Producto.objects.get(id_producto = id_productoM)
     producto.nombre = nombreM
     producto.descripcion = descripcionM
     producto.precio = precioM
     producto.stock = stockM
+    producto.foto = fotoM
 
     producto.save()
     return redirect('listacelular')
