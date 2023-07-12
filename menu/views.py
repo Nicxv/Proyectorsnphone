@@ -189,17 +189,6 @@ def listacelular(request):
 
 
 def registrar_celular(request):
-
-    pid_producto = request.POST['id_producto']
-    pnombre = request.POST['nombre']
-    pdescripcion = request.POST['descripcion']
-    pprecio = request.POST['precio']
-    pstock = request.POST['stock']
-    pfoto = request.FILES['foto']
-
-    Producto.objects.create(id_producto=pid_producto, nombre=pnombre, descripcion=pdescripcion,
-                            precio=pprecio, stock=pstock, foto=pfoto)
-    
     contexto = {} 
 
     pid_producto = request.POST['id_producto']
@@ -220,12 +209,15 @@ def registrar_celular(request):
     pfoto = request.FILES['foto']
 
 
+    Producto.objects.create(id_producto=pid_producto, nombre=pnombre, descripcion=pdescripcion,
+                            precio=pprecio, stock=pstock, foto=pfoto)
+
+
 
     valida = Usuario.objects.all()
 
        
-    Usuario.objects.create(rut=vRutU, nombre=vNombreU, apellido=vApellidoU, correo=vCorreoU,
-                           direccion=vDireccionU, clave=vClaveU)
+   
         
     return redirect('form_celular')
 
@@ -308,9 +300,6 @@ def principal2(request):
     return render(request, 'menu/principal2.html')
 
 
-def index(request):
-    return render(request, 'menu/index.html')
 
-def index2(request):
-    return render(request, 'menu/index2.html')
+
 
