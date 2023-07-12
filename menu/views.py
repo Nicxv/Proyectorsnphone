@@ -189,37 +189,18 @@ def listacelular(request):
 
 
 def registrar_celular(request):
-    contexto = {} 
 
     pid_producto = request.POST['id_producto']
-    contexto["id_producto"]=pid_producto
-
     pnombre = request.POST['nombre']
-    contexto["nombre"]=pnombre
-
     pdescripcion = request.POST['descripcion']
-    contexto["descripcion"]=pdescripcion
-
     pprecio = request.POST['precio']
-    contexto["precio"]=pprecio
-
     pstock = request.POST['stock']
-    contexto["stock"]=pstock
-
     pfoto = request.FILES['foto']
-
 
     Producto.objects.create(id_producto=pid_producto, nombre=pnombre, descripcion=pdescripcion,
                             precio=pprecio, stock=pstock, foto=pfoto)
-
-
-
-    valida = Usuario.objects.all()
-
-       
-   
         
-    return redirect('form_celular')
+    return redirect('listacelular')
 
 def form_celular(request):
     return render(request, 'menu/form_celular.html')    
@@ -298,6 +279,12 @@ def carrito2(request):
 
 def principal2(request):
     return render(request, 'menu/principal2.html')
+
+def index(request):
+    return render(request, 'menu/index.html')
+
+def index2(request):
+    return render(request, 'menu/index2.html')
 
 
 
