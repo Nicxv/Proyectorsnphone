@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import modificar_usuario, actualizar_usuario, verperfil, principal2, carrito2, boleta, PantallaAdmin2, actualizar_producto, eliminar_producto, registrar_celular, modificar_producto, iniciar_sesion, exito, guardar_registro, registrarse, lista_usuario, form_celular, listacelular, principal, samsung, xiaomi, pago2, Xiaomi_redmi_note_12, Xiaomi_mi_8_lite,Xiaomi_poco_mxi5,Xiaomi_redmi_10_5g,Xiaomi_redmi_10_2022,Xiaomi_redmi_10,Xiaomi_redmi_note_10s,Xiaomi_redmi_note_11, Samsung_galaxy_s10,Samsung_galaxy_a03,Samsung_galaxy_a22,Samsung_galaxy_a53,Samsung_galaxy_a54,Samsung_galaxy_a73,Samsung_galaxy_s23s,Samsung_galaxy_z_flip4, registro, cambiarcontra, micuenta, carrito
+from .views import modificar_usuario, index, index2, actualizar_usuario, verperfil, principal2, carrito2, boleta, PantallaAdmin2, actualizar_producto, eliminar_producto, registrar_celular, modificar_producto, iniciar_sesion, exito, guardar_registro, registrarse, lista_usuario, form_celular, listacelular, principal, samsung, xiaomi, pago2, Xiaomi_redmi_note_12, Xiaomi_mi_8_lite,Xiaomi_poco_mxi5,Xiaomi_redmi_10_5g,Xiaomi_redmi_10_2022,Xiaomi_redmi_10,Xiaomi_redmi_note_10s,Xiaomi_redmi_note_11, Samsung_galaxy_s10,Samsung_galaxy_a03,Samsung_galaxy_a22,Samsung_galaxy_a53,Samsung_galaxy_a54,Samsung_galaxy_a73,Samsung_galaxy_s23s,Samsung_galaxy_z_flip4, registro, cambiarcontra, micuenta, carrito
 
 urlpatterns = [
     path('',principal,name="principal"),
@@ -51,6 +51,7 @@ urlpatterns = [
     path('verperfil',verperfil,name="verperfil"),
     path('actualizar_usuario',actualizar_usuario,name="actualizar_usuario"),
     path('modificar_usuario/<int:id>',modificar_usuario,name="modificar_usuario"),
-
+    path('index',index,name="index"),
+    path('index2',index2,name="index2"),
  
 ]

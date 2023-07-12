@@ -284,6 +284,9 @@ def principal2(request):
     return render(request, 'menu/principal2.html')
 
 
+def index(request):
+    return render(request, 'menu/index.html')
 
-
+def index2(request):
+    return render(request, 'menu/index2.html')
 
