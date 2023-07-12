@@ -7,8 +7,6 @@ from django.contrib.auth import authenticate,login, logout
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 
-from menu.forms import ProductoForm
-
 from .models import Usuario, Rol, Venta, Detalle_venta, Producto, Marca, Sucursal, Direccion, Comuna, Region
 
 # Create your views here.
@@ -197,14 +195,40 @@ def registrar_celular(request):
     pdescripcion = request.POST['descripcion']
     pprecio = request.POST['precio']
     pstock = request.POST['stock']
-    pfoto = request.FILES['fotop']
+    pfoto = request.FILES['foto']
 
     Producto.objects.create(id_producto=pid_producto, nombre=pnombre, descripcion=pdescripcion,
                             precio=pprecio, stock=pstock, foto=pfoto)
-        
-    return redirect('listacelular')
-        
     
+    contexto = {} 
+
+    pid_producto = request.POST['id_producto']
+    contexto["id_producto"]=pid_producto
+
+    pnombre = request.POST['nombre']
+    contexto["nombre"]=pnombre
+
+    pdescripcion = request.POST['descripcion']
+    contexto["descripcion"]=pdescripcion
+
+    pprecio = request.POST['precio']
+    contexto["precio"]=pprecio
+
+    pstock = request.POST['stock']
+    contexto["stock"]=pstock
+
+    pfoto = request.FILES['foto']
+
+
+
+    valida = Usuario.objects.all()
+
+       
+    Usuario.objects.create(rut=vRutU, nombre=vNombreU, apellido=vApellidoU, correo=vCorreoU,
+                           direccion=vDireccionU, clave=vClaveU)
+        
+    return redirect('form_celular')
+
 def form_celular(request):
     return render(request, 'menu/form_celular.html')    
 
