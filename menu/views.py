@@ -189,17 +189,6 @@ def listacelular(request):
 
 
 def registrar_celular(request):
-
-    pid_producto = request.POST['id_producto']
-    pnombre = request.POST['nombre']
-    pdescripcion = request.POST['descripcion']
-    pprecio = request.POST['precio']
-    pstock = request.POST['stock']
-    pfoto = request.FILES['foto']
-
-    Producto.objects.create(id_producto=pid_producto, nombre=pnombre, descripcion=pdescripcion,
-                            precio=pprecio, stock=pstock, foto=pfoto)
-    
     contexto = {} 
 
     pid_producto = request.POST['id_producto']
